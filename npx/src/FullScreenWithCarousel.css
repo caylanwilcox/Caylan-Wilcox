@@ -1,0 +1,66 @@
+/* Fullscreen background styling */
+body{
+    background-color: black;
+}
+.fullscreen-container {
+  width: 100vw;
+  height: 100vh;
+  background: url('./fullscreen-background.jpg') no-repeat center center fixed; 
+  background-size: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.slide-container {
+  width: 40vw;
+  color:white;
+  border: 2px solid blue;
+
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:black; /* Example background color for visibility */
+  margin: auto; /* Center the container in the carousel window */
+}.carousel .control-arrow {
+  opacity: 1; /* Ensure arrows are visible */
+  z-index: 23; /* Ensure arrows are above other content */
+  background-color: black; /* Dark background for better visibility */
+  border-radius: 50%; /* Circular background */
+  width: 50px; /* Size of the arrow container */
+  height: 50px; /* Size of the arrow container */
+
+  transform: translateY(875%); /* Adjust based on height to center vertically */
+}
+
+.carousel .control-prev.control-arrow {
+  left: 100vw; /* Adjust for positioning from the left */
+  background-color: black; /* Dark background for better visibility */
+  border-radius: 50%; /* Circular background */
+  width: 50px; /* Size of the arrow container */
+  height: 50px; /* Size of the arrow container */
+}
+
+.carousel .control-next.control-arrow {
+  right: 100vw; /* Adjust for positioning from the right */
+    background-color: black; /* Dark background for better visibility */
+  border-radius: 50%; /* Circular background */
+  width: 50px; /* Size of the arrow container */
+  height: 50px; /* Size of the arrow container */
+}
+
+.carousel .control-arrow:before {
+  /* Adjust arrow size and color */
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+}
+
+.carousel .control-prev.control-arrow:before {
+  border-right: 15px solid #fff; /* Left arrow color */
+  
+}
+
+.carousel .control-next.control-arrow:before {
+  border-left: 15px solid #fff; /* Right arrow color */
+}
