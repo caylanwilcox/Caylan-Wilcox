@@ -27,15 +27,24 @@ const Slide = ({ title, content }) => {
 // The FullScreenWithCarousel component
 const FullScreenWithCarousel = () => {
  const [showSlides, setShowSlides] = useState(false);
-
+const handleCloseSlides = () => setShowSlides(false);
   // Correctly place function here
   const handleArrowClick = () => setShowSlides(true);
 
 
   return (
     <div className="fullscreen-container" style={{ backgroundImage: `url(${fullscreenBackground})` }}>
-<div className={`hero-text ${showSlides ? 'hidden' : ''}`}>Journey <h4> by Caylan Wilcox</h4></div>
-
+  {!showSlides && (
+    <div className="hero-text">
+      <h1>Hello, my name is</h1>
+      <h2>Caylan Wilcox</h2>
+      <h3>I'm a Web Developer.</h3>
+      <div className="email-input-container">
+        <input type="email" placeholder="Enter Your Email" />
+        <button>Let's Connect</button>
+      </div>
+    </div>
+  )}
       {!showSlides && (
         <button onClick={handleArrowClick} className="start-slideshow-arrow">→</button>
       )}
@@ -51,9 +60,9 @@ const FullScreenWithCarousel = () => {
          
           <div className="slide-container">
               <div className="header-container">
-    <h1>I'M Caylan Wilcox</h1>
+  
     <p>Frontend WebDeveloper</p>
-    <button className="contact-me-btn">Contact Me</button>
+
     {/* Include social icons if needed */}
   </div>
  <div className="skills-header">
@@ -105,7 +114,9 @@ const FullScreenWithCarousel = () => {
       <p>Git Source Control</p>
     </div>
   </div>
-</div>
+  {showSlides && (
+    <button onClick={handleCloseSlides} className="close-button">×</button>
+  )}</div>
 
           <Slide title="Project Highlights" content={
             <ul>

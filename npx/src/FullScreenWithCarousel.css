@@ -2,6 +2,42 @@
 body{
     background-color: black;
 }
+.header-container {
+  text-align: center; /* Aligns content to the center */
+  margin-bottom: 2em; /* Provides spacing below the header */
+}
+
+.profile-photo {
+  max-width: 100px; /* Adjust to desired size */
+  border-radius: 50%; /* Makes the photo circular */
+  margin-bottom: 1em; /* Space below the photo */
+}
+
+.header-container h1 {
+  color: #fff; /* Text color for the name */
+  margin-bottom: 0.5em; /* Space below the name */
+}
+
+.header-container p {
+  color: #aaa; /* Text color for the title/subtitle */
+  margin-bottom: 1em; /* Space below the title/subtitle */
+}
+
+.contact-me-btn {
+  padding: 10px 20px; /* Padding inside the button */
+  border: none; /* No border for the button */
+  border-radius: 5px; /* Rounded corners for the button */
+  background-color: #fff; /* Button background color */
+  color: #000; /* Button text color */
+  cursor: pointer; /* Changes cursor to indicate the button is clickable */
+  font-weight: bold; /* Makes the button text bold */
+  text-transform: uppercase; /* Uppercases the button text */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.contact-me-btn:hover {
+  background-color: #f0f0f0; /* Slightly changes button color on hover */
+}
 .fullscreen-container {
   width: 100vw;
   height: 100vh;
@@ -29,7 +65,7 @@ body{
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
   border: 1px solid rgba(255, 255, 255, 0.2); /* Slight border for defined edges */
   padding: 20px; /* Padding inside the container */
-  margin: auto; /* Center the container in the carousel window */
+  margin: auto; /* Center the container in the carouzsel window */
 
 }.carousel .control-arrow {
   opacity: 1; /* Ensure arrows are visible */
@@ -80,6 +116,7 @@ body{
   grid-template-columns: repeat(4, 1fr);
   gap: 15px; /* Adjust gap size as needed */
   margin-bottom: 20px; /* Spacing after the grid for smaller screens */
+  padding-top: 20px
 }
 .skill-item {
   display: flex;
@@ -187,18 +224,18 @@ body{
 .carousel .control-next.control-arrow:before {
   border-left: 15px solid #fff; /* Right arrow color */
 }
-button {
+.start-slideshow-arrow {
   font-size: 1.5em;
   padding: 10px 20px;
   cursor: pointer;
   border: none;
   border-radius: 5px;
-  background-color: yellow;
+
   color: white;
   transition: background-color 0.3s ease;
 }
 
-button:hover {
+.start-slideshow-arrow:hover {
   background-color: #0056b3;
 }
 
@@ -215,3 +252,94 @@ button:hover {
   visibility: visible;
 }
 
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 10%; /* Adjust based on your design */
+  transform: translateY(-50%);
+  color: white;
+  text-align: left;
+  z-index: 10; /* Ensure it appears above the background but below the arrow button */
+  transition: opacity 0.5s ease-in-out;
+}
+
+.hero-text h1 {
+  margin: 0;
+  font-size: .5em; /* Smaller text for the introductory line */
+}
+
+.hero-text h2 {
+  margin: 10px -2px;
+  font-size: 1em; /* Larger text for the name */
+  font-weight: bold; /* Makes the name stand out */
+}
+
+.hero-text h3 {
+  margin: 0;
+  font-size: .5em; /* Subtitle text for the profession */
+}
+.email-input-container input[type="email"]{
+  
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent white background */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Light border for the glass effect */
+  backdrop-filter: blur(5px); /* Blurred glass effect */
+  -webkit-backdrop-filter: blur(5px); /* For Safari */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  border-radius: 5px; /* Rounded corners for the input and button */
+  padding: 8px 16px; /* Padding inside the input and button */
+  margin: 0 -5px; /* Spacing between the input and button */
+  font-size: 0.5em; /* Smaller font size */
+  color: #fff; /* White text color for better visibility */
+  
+  
+}
+.email-input-container button {
+  background: rgba(255, 255, 255, 0.2); /* Semi-transparent white background */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Light border for the glass effect */
+  backdrop-filter: blur(5px); /* Blurred glass effect */
+  -webkit-backdrop-filter: blur(5px); /* For Safari */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  border-radius: 5px; /* Rounded corners for the input and button */
+  padding: 8px 16px; /* Padding inside the input and button */
+  margin: 0 5px; /* Spacing between the input and button */
+
+  font-size: 0.5em; /* Smaller font size */
+  color: #fff; /* White text color for better visibility */
+}
+
+.email-input-container input[type="email"] {
+  width: auto; /* Adjust width to fit content or use a fixed width */
+  flex-grow: 1; /* Allows the input to grow and fill the available space */
+}
+.close-button {
+  position: absolute;
+  top: 20px; /* Adjust as necessary */
+  right: 20px; /* Adjust as necessary */
+  background: transparent;
+  border: none;
+  color: white; /* Initial color of the X */
+  font-size: 24px; /* Adjust size as necessary */
+  cursor: pointer;
+  z-index: 100; /* Ensure it's above the carousel */
+  transition: color 0.3s ease; /* Transition for color change */
+}
+
+.close-button:hover {
+  color: red; /* Color changes to red on hover */
+}
+
+
+.email-input-container button {
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.email-input-container button:hover {
+  background-color: rgba(255, 255, 255, 0.3); /* Slightly darker on hover */
+}
+
+/* Ensure the text is not hidden when the slides are not showing */
+.hidden {
+  opacity: 1;
+  visibility: visible;
+}
