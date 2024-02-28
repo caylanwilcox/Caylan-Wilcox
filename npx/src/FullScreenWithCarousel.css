@@ -15,14 +15,22 @@ body{
 .slide-container {
   width: 40vw;
   color:white;
-  border: 2px solid blue;
+  text-align: center;
 
   height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color:black; /* Example background color for visibility */
+  margin: auto; /* Center the container in the carousel window *
+    background: rgba(255, 255, 255, 0.1); /* Adjust the color and opacity to your liking */
+  border-radius: 15px; /* Rounded corners */
+  backdrop-filter: blur(10px); /* Blurred glass effect */
+  -webkit-backdrop-filter: blur(10px); /* For Safari compatibility */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Slight border for defined edges */
+  padding: 20px; /* Padding inside the container */
   margin: auto; /* Center the container in the carousel window */
+
 }.carousel .control-arrow {
   opacity: 1; /* Ensure arrows are visible */
   z-index: 23; /* Ensure arrows are above other content */
@@ -32,8 +40,97 @@ body{
   height: 50px; /* Size of the arrow container */
 
   transform: translateY(875%); /* Adjust based on height to center vertically */
+}.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3em;
+  color: white;
+  text-align: center;
+  z-index: 10; /* Ensure it appears above the background but below the arrow button */
+  transition: opacity 0.5s ease-in-out; /* Smooth transition for appearing/disappearing */
+}
+.slide-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.skills-header h2 {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 1em; /* Adjust as needed */
+}
+.skills-section {
+  background: #222; /* or any color that matches your design */
+  padding: 20px;
+  border-radius: 10px; /* Adjust based on your preference */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Optional: adds some depth */
 }
 
+.skills-title {
+  color: #fff; /* Adjust text color as needed */
+  margin-bottom: 20px; /* Adjust spacing as needed */
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px; /* Adjust gap size as needed */
+  margin-bottom: 20px; /* Spacing after the grid for smaller screens */
+}
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #333; /* Example background color, adjust as needed */
+  color: #fff; /* Text color */
+  width: 100px; /* Define a fixed size for square items */
+  height: 100px; /* Make height equal to the width to create a square */
+  margin: 0.5em; /* Spacing between the grid items */
+  border-radius: 8px; /* Optional: if you want rounded corners */
+  overflow: hidden; /* Ensures the content fits within the item boundaries */
+}
+
+
+.skill-item img {
+  max-width: 40%; /* Sets the maximum width of the image to 70% of the parent container */
+  height: auto; /* Ensures the image height scales proportionally */
+
+  margin-bottom: 0.5em; /* Space between icon and label */
+  margin-top: .5em;
+}
+
+.skill-item p {
+  margin: 0;
+  font-size: 0.9em; /* Adjust font size as needed */
+}
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
 .carousel .control-prev.control-arrow {
   left: 100vw; /* Adjust for positioning from the left */
   background-color: black; /* Dark background for better visibility */
@@ -49,6 +146,32 @@ body{
   width: 50px; /* Size of the arrow container */
   height: 50px; /* Size of the arrow container */
 }
+.start-slideshow-arrow {
+  position: fixed; /* Or absolute, depending on your needs */
+  top: 50%; /* Middle of the screen vertically */
+  right: 20px; /* Adjust based on desired distance from the right edge */
+  transform: translateY(-50%); /* Center the button vertically */
+  font-size: 2em; /* Adjust size */
+  cursor: pointer;
+  background: none; /* Transparent background */
+  border: none; /* No border */
+  color: #007bff; /* Adjust arrow color */
+  z-index: 100; /* Ensure it's above other content */
+}/* Adjustments for smoother transitions and clarity */
+.fullscreen-container .carousel-hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(100%); /* Start off-screen to the right */
+  transition: opacity 0.5s ease-in-out, transform 0.3s ease-in-out; /* Smooth transition for opacity and horizontal movement */
+}
+
+.fullscreen-container .carousel-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0); /* Move to original position */
+  transition: opacity 0.5s ease-in-out, transform 0.3s ease-in-out; /* Smooth transition for opacity and horizontal movement */
+}
+
 
 .carousel .control-arrow:before {
   /* Adjust arrow size and color */
@@ -64,3 +187,31 @@ body{
 .carousel .control-next.control-arrow:before {
   border-left: 15px solid #fff; /* Right arrow color */
 }
+button {
+  font-size: 1.5em;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: yellow;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Initial Carousel Hidden Style */
+.fullscreen-container .carousel-hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+/* Carousel Visible Style (You should add this class dynamically based on the state) */
+.fullscreen-container .carousel-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
