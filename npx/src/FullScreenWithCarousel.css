@@ -48,6 +48,7 @@ body{
   align-items: center;
   position: relative;
 }
+
 .slide-container {
   width: 40vw;
   color:white;
@@ -376,51 +377,59 @@ body{
   transform: translateY(-5px); /* Creates a small lift effect */
   box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional shadow for depth */
 }
-/* Media queries for iPhone and similar small screens */
-@media only screen and (max-width: 414px) {
-  /* Adjust grid to have 1 column on small devices */
-  .projects-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem; /* Smaller gap for compact spaces */
+/* Media queries for responsive adjustments */
+@media (max-width: 768px) {
+  .slide-container {
+    width: 95vw; /* Takes up more of the viewport width on smaller screens */
+    height: 70vh; /* Decrease height on smaller screens to ensure fit */
   }
 
-  /* Adjust project item images for smaller screens */
-  .project-item img {
-    height: 100px; /* Smaller images on smaller screens */
+  .hero-text {
+    font-size: 2em; /* Decrease font size for smaller screens */
+    padding: 0 5%; /* Add padding to ensure text does not touch the edges */
   }
 
-  /* Adjust font sizes if necessary */
-  .header-container h1, .header-container p, .skill-item p {
-    font-size: smaller; /* Smaller text on smaller screens */
-  }
-
-  /* Adjust padding and sizes for buttons and inputs */
-  .contact-me-btn, .email-input-container input[type="email"], .email-input-container button {
-    padding: 8px 10px; /* Smaller padding */
-    font-size: 0.8em; /* Smaller font size */
-  }
-
-  /* Adjust hero text and slide container for better visibility and fit */
-  .hero-text, .slide-container {
-    font-size: 0.8em; /* Smaller text size */
-    padding: 10px; /* Less padding */
-  }
-
-  /* Adjust spacing and layout for skills and other sections */
   .skills-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns instead of 4 on small screens */
-  }
-
-  /* Adjust carousel controls for easier interaction */
-  .carousel .control-prev.control-arrow, .carousel .control-next.control-arrow {
-    width: 40px; /* Smaller arrow containers */
-    height: 40px;
+    grid-template-columns: repeat(2, 1fr); /* Adjust grid to two columns for readability */
   }
 }
 
-/* Consider an even smaller query for devices narrower than 320px */
-@media only screen and (max-width: 320px) {
+@media (max-width: 480px) {
+  .slide-container {
+    width: 100vw; /* Full viewport width */
+    height: auto; /* Auto height to fit content */
+    padding: 5%; /* Increased padding for edge spacing */
+  }
+
+  .hero-text {
+    font-size: 1.5em; /* Further reduce font size */
+    text-align: center; /* Ensure text is centered */
+  }
+
   .skills-grid {
-    grid-template-columns: 1fr; /* Single column for very small screens */
+    grid-template-columns: 1fr; /* Single column for very small devices */
+  }
+
+  /* Adjust font sizes for smaller elements to ensure readability */
+  .header-container h1, .header-container p, .skill-item p {
+    font-size: smaller; /* Adjust font size to improve readability */
+  }
+
+  /* Adjust carousel control size and position */
+  .carousel .control-prev.control-arrow, .carousel .control-next.control-arrow {
+    width: 35px; /* Smaller arrows */
+    height: 35px;
+    transform: translateY(-50%); /* Ensure arrows are vertically centered */
+  }
+}
+
+/* Further adjustments for extremely small screens or specific orientations */
+@media (max-width: 320px) {
+  .header-container h1, .header-container p {
+    font-size: 0.8em; /* Even smaller font sizes for very small screens */
+  }
+
+  .contact-me-btn, .email-input-container input[type="email"], .email-input-container button {
+    font-size: 0.7em; /* Adjust font size for form elements */
   }
 }
