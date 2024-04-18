@@ -115,7 +115,6 @@ body{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 15px; /* Adjust gap size as needed */
-  margin-bottom: 20px; /* Spacing after the grid for smaller screens */
   padding-top: 20px
 }
 .skill-item {
@@ -342,4 +341,38 @@ body{
 .hidden {
   opacity: 1;
   visibility: visible;
+}
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Sets exactly two columns per row */
+  gap: 4rem; /* Adjust for desired spacing between projects */
+  margin: 1rem; /* Adjust for desired grid margin */
+}
+
+.project-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none; /* Removes underline from links if you use 'a' tags */
+}
+
+.project-item img {
+    border-radius: 5%;
+
+  width: 100%; /* Adjust if you want some padding around the image */
+  height: 120px;
+  aspect-ratio: 1 / 1; /* Keeps the image as a square */
+  object-fit: contain; /* Ensures the image covers the area without stretching */
+}
+
+.project-item p {
+  margin-top: 0.5rem; /* Adjust for desired spacing between image and title */
+}
+
+/* Hover effect for project items */
+.project-item:hover,
+.project-item:focus {
+  transform: translateY(-5px); /* Creates a small lift effect */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional shadow for depth */
 }
