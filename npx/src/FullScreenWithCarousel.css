@@ -376,3 +376,51 @@ body{
   transform: translateY(-5px); /* Creates a small lift effect */
   box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional shadow for depth */
 }
+/* Media queries for iPhone and similar small screens */
+@media only screen and (max-width: 414px) {
+  /* Adjust grid to have 1 column on small devices */
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem; /* Smaller gap for compact spaces */
+  }
+
+  /* Adjust project item images for smaller screens */
+  .project-item img {
+    height: 100px; /* Smaller images on smaller screens */
+  }
+
+  /* Adjust font sizes if necessary */
+  .header-container h1, .header-container p, .skill-item p {
+    font-size: smaller; /* Smaller text on smaller screens */
+  }
+
+  /* Adjust padding and sizes for buttons and inputs */
+  .contact-me-btn, .email-input-container input[type="email"], .email-input-container button {
+    padding: 8px 10px; /* Smaller padding */
+    font-size: 0.8em; /* Smaller font size */
+  }
+
+  /* Adjust hero text and slide container for better visibility and fit */
+  .hero-text, .slide-container {
+    font-size: 0.8em; /* Smaller text size */
+    padding: 10px; /* Less padding */
+  }
+
+  /* Adjust spacing and layout for skills and other sections */
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns instead of 4 on small screens */
+  }
+
+  /* Adjust carousel controls for easier interaction */
+  .carousel .control-prev.control-arrow, .carousel .control-next.control-arrow {
+    width: 40px; /* Smaller arrow containers */
+    height: 40px;
+  }
+}
+
+/* Consider an even smaller query for devices narrower than 320px */
+@media only screen and (max-width: 320px) {
+  .skills-grid {
+    grid-template-columns: 1fr; /* Single column for very small screens */
+  }
+}
