@@ -1,6 +1,8 @@
 /* Fullscreen background styling */
 body{
     background-color: black;
+    margin: 0px;
+    padding:0px;
 }
 .header-container {
   text-align: center; /* Aligns content to the center */
@@ -47,8 +49,9 @@ body{
   justify-content: center;
   align-items: center;
   position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
-
 .slide-container {
   width: 40vw;
   color:white;
@@ -234,6 +237,13 @@ body{
   color: white;
   transition: background-color 0.3s ease;
 }
+.slide.selected.previous {
+  display: flex;
+  justify-content: center; /* Horizontally center the child */
+  align-items: center; /* Vertically center the child */
+  height: 100%; /* Ensure the parent has a defined height */
+  width: 100%; /* Ensure the parent has a defined width */
+}
 
 .start-slideshow-arrow:hover {
   background-color: #0056b3;
@@ -353,14 +363,13 @@ body{
 .project-item {
   display: flex;
   flex-direction: column;
+  border-radius: 5%;
   align-items: center;
   cursor: pointer;
   text-decoration: none; /* Removes underline from links if you use 'a' tags */
 }
 
 .project-item img {
-    border-radius: 5%;
-
   width: 100%; /* Adjust if you want some padding around the image */
   height: 120px;
   aspect-ratio: 1 / 1; /* Keeps the image as a square */
@@ -377,59 +386,73 @@ body{
   transform: translateY(-5px); /* Creates a small lift effect */
   box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional shadow for depth */
 }
-/* Media queries for responsive adjustments */
-@media (max-width: 768px) {
-  .slide-container {
-    width: 95vw; /* Takes up more of the viewport width on smaller screens */
-    height: 70vh; /* Decrease height on smaller screens to ensure fit */
-  }
+@media only screen and (max-width: 400px) { /* Adjust for iPhone 12 width */
+.slide-container {
+  width: 80vw;
+  color:white;
+  text-align: center;
 
-  .hero-text {
-    font-size: 2em; /* Decrease font size for smaller screens */
-    padding: 0 5%; /* Add padding to ensure text does not touch the edges */
-  }
+  height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto; /* Center the container in the carousel window *
+    background: rgba(255, 255, 255, 0.1); /* Adjust the color and opacity to your liking */
+  border-radius: 15px; /* Rounded corners */
+  backdrop-filter: blur(10px); /* Blurred glass effect */
+  -webkit-backdrop-filter: blur(10px); /* For Safari compatibility */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Slight border for defined edges */
+  padding: 20px; /* Padding inside the container */
+  margin: auto; /* Center the container in the carouzsel window */
 
-  .skills-grid {
-    grid-template-columns: repeat(2, 1fr); /* Adjust grid to two columns for readability */
-  }
 }
 
-@media (max-width: 480px) {
-  .slide-container {
-    width: 100vw; /* Full viewport width */
-    height: auto; /* Auto height to fit content */
-    padding: 5%; /* Increased padding for edge spacing */
-  }
-
-  .hero-text {
-    font-size: 1.5em; /* Further reduce font size */
-    text-align: center; /* Ensure text is centered */
-  }
-
-  .skills-grid {
-    grid-template-columns: 1fr; /* Single column for very small devices */
-  }
-
-  /* Adjust font sizes for smaller elements to ensure readability */
-  .header-container h1, .header-container p, .skill-item p {
-    font-size: smaller; /* Adjust font size to improve readability */
-  }
-
-  /* Adjust carousel control size and position */
-  .carousel .control-prev.control-arrow, .carousel .control-next.control-arrow {
-    width: 35px; /* Smaller arrows */
-    height: 35px;
-    transform: translateY(-50%); /* Ensure arrows are vertically centered */
-  }
+.fullscreen-container {
+  width: 95vw;
+  height: 95vh;
+  background: url('./fullscreen-background.jpg') no-repeat center center fixed; 
+  background-size: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
-/* Further adjustments for extremely small screens or specific orientations */
-@media (max-width: 320px) {
-  .header-container h1, .header-container p {
-    font-size: 0.8em; /* Even smaller font sizes for very small screens */
+@media only screen and (max-width: 390px) {
+  .carousel .control-prev.control-arrow {
+    left: 10px; /* Fixed distance from the left */
   }
 
-  .contact-me-btn, .email-input-container input[type="email"], .email-input-container button {
-    font-size: 0.7em; /* Adjust font size for form elements */
+  .carousel .control-next.control-arrow {
+    right: 10px; /* Fixed distance from the right */
+  }
+
+  .start-slideshow-arrow {
+    /* Make sure this button doesn't overlap with the next arrow on small screens */
+    right: 60px; /* Adjusted so it doesn't conflict with the arrow */
+  }
+}
+}@media only screen and (max-width: 390px) {
+  .carousel .control-arrow {
+    /* Adjust your properties here */
+   
+  } .start-slideshow-arrow {
+    transform: translateY(-130%); /* Keeps it centered horizontally */
+    /* You may need to adjust the translateY value as well if you change the top value */
+    background-color: lightgreen;
+    width: 70px;
+    height: 60px;
+    justify-content: center;
+    align-content: center;
+  }
+}@media (max-width: 600px) {
+  .hero-text {
+    font-size: 1.5em; /* Smaller font size on smaller screens */
+  }
+
+  input[type="email"],
+  .contact-me-btn {
+    width: 90%; /* Allow the input and button to take more space */
   }
 }

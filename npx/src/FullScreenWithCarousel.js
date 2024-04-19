@@ -18,10 +18,11 @@ import project2Img from './project2.jpg';
 import project3Img from './project3.png';
 import project4Img from './project4.jpg';
 
-const Slide = ({ title, content }) => (
+const Slide = ({ title, content,handleCloseSlides  }) => (
   <div className="slide-container">
     <h2>{title}</h2>
     {typeof content === 'string' ? <p>{content}</p> : content}
+     <button onClick={handleCloseSlides} className="close-button">×</button>
   </div>
 );
 
@@ -49,7 +50,7 @@ const handleProjectClick = (projectId) => {
   }
 };
 
-const ProjectHighlightsSlide = () => (
+const ProjectHighlightsSlide = ({handleCloseSlides}) => (
   <div className="slide-container">
     <h2>Project Highlights</h2>
     <div className="projects-grid">
@@ -63,6 +64,8 @@ const ProjectHighlightsSlide = () => (
         />
       ))}
     </div>
+         <button onClick={handleCloseSlides} className="close-button">×</button>
+
   </div>
 );
 
@@ -90,7 +93,7 @@ const FullScreenWithCarousel = () => {
       {showSlides && (
         <div className={showSlides ? "carousel-visible" : "carousel-hidden"}>
           <Carousel showArrows={true} autoPlay={false} infiniteLoop={true} showThumbs={false}>
-            <Slide title="My Passion for Software Development" content="My passion is having ideas and solving how to bring them to life. I love self growth and talking about it because I would not be building applications today without it. I am gravited with the challenges associated with being on the bleeding edge of technology. Being a software engineer at tesla would mean the impossible to me. Please take a look through my portfolio and thank you for your time." />
+            <Slide title="My Passion for Software Development" content="My passion is having ideas and solving how to bring them to life. I love self growth and talking about it because I would not be building applications today without it. I am gravited with the challenges associated with being on the bleeding edge of technology. Being a software engineer at tesla would mean the impossible to me. Please take a look through my portfolio and thank you for your time." handleCloseSlides={handleCloseSlides} />
             <div className="slide-container">
               <div className="skills-header">
                 <h2>Skills and Technologies</h2>
@@ -109,9 +112,9 @@ const FullScreenWithCarousel = () => {
               </div>
               <button onClick={handleCloseSlides} className="close-button">×</button>
             </div>
-            <ProjectHighlightsSlide />
-            <Slide title="Hobbies and Interests" content="In my free time, I enjoy hiking, reading about new technology trends, and participating in hackathons to challenge myself and learn from others." />
-            <Slide title="Future Goals" content="Looking forward, I aim to deepen my knowledge in cloud computing and cybersecurity, areas that are rapidly evolving and critical to the future of technology." />
+            <ProjectHighlightsSlide handleCloseSlides={handleCloseSlides} />
+            <Slide title="Hobbies and Interests" content="In my free time, I enjoy hiking, reading about new technology trends, and participating in hackathons to challenge myself and learn from others." handleCloseSlides={handleCloseSlides} />
+            <Slide title="Future Goals" content="Looking forward, I aim to deepen my knowledge in cloud computing and cybersecurity, areas that are rapidly evolving and critical to the future of technology."handleCloseSlides={handleCloseSlides} />
           </Carousel>
         </div>
       )}
