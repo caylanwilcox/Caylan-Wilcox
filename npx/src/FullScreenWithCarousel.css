@@ -41,6 +41,8 @@ body{
   background-color: #f0f0f0; /* Slightly changes button color on hover */
 }
 .fullscreen-container {
+    position: relative;
+
   width: 100vw;
   height: 100vh;
   background: url('./fullscreen-background.jpg') no-repeat center center fixed; 
@@ -436,17 +438,12 @@ body{
   }
 }
 }@media only screen and (max-width: 390px) {
-  .carousel .control-arrow {
-    /* Adjust your properties here */
-   
-  } .start-slideshow-arrow {
-    transform: translateY(-100%); /* Keeps it centered horizontally */
+ .start-slideshow-arrow {
     /* You may need to adjust the translateY value as well if you change the top value */
     background-color: lightgreen;
-    width: 70px;
-    height: 60px;
-    justify-content: center;
-    align-content: center;
+    width: 35px;
+    height: 35px;
+
   }
 }@media (max-width: 600px) {
   .hero-text {
