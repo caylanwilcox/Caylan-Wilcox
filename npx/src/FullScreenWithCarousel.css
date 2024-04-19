@@ -445,6 +445,11 @@ body{
     height: 35px;
 
   }
+   .close-button {
+    top: 10px;
+    right: 10px;
+    font-size: 20px; /* Adjust size for smaller screens */
+  }
 }@media (max-width: 600px) {
   .hero-text {
     font-size: 1.5em; /* Smaller font size on smaller screens */
