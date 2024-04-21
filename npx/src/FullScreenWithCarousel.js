@@ -16,6 +16,7 @@ import git from './gits.jpg';
 import project1Img from './project1.png'; // Placeholder, replace with actual paths
 import project2Img from './project2.jpg';
 import project3Img from './project3.png';
+
 import project4Img from './project4.jpg';
 
 const Slide = ({ title, content,handleCloseSlides  }) => (
@@ -27,45 +28,43 @@ const Slide = ({ title, content,handleCloseSlides  }) => (
 );
 
 const Project = ({ title, image, link }) => (
-  <a href={link} className="project-item">
-    <img src={image} alt={title} />
+  <div className="project-item" onClick={(e) => {
+    e.preventDefault(); // Prevent default and stop propagation if needed
+    console.log('Opening link:', link); // Debugging output
+    window.open(link, '_blank'); // Ensure the link opens in a new tab
+  }}>
+    <img src={image} alt={title} style={{ cursor: 'pointer' }} />
     <p>{title}</p>
-  </a>
+  </div>
 );
-
-
 const projectDetails = [
-  { title: 'Realtime Tesla Fleet Manager', image: project1Img, id: 'project1',  technologies: ['React', 'css', 'MongoDB'] },
-  { title: 'Luxury Jewelers Website', image: project2Img, id: 'project2' },
-  { title: 'Car Detailing Website Night Mode', image: project3Img, id: 'project3' },
-  { title: 'Tesla Online Proposal', image: project4Img, id: 'project4' }
+  { title: 'Realtime Tesla Fleet Manager', image: project1Img, id: 'project1', link:'https://tesla-test-drive.vercel.app/',  technologies: ['React', 'css', 'MongoDB'] },
+  { title: 'Luxury Jewelers Website', image: project2Img, id: 'project2',link:'https://jewelry-business-react.vercel.app/' },
+  { title: 'Car Detailing Website Night Mode', image: project3Img, id: 'project3',link:'https://window-tints.vercel.app/' },
+  { title: 'Tesla Online Proposal', image: project4Img, id: 'project4',link:'https://tesla-online-etxg.vercel.app/' }
 ];
 
 
 
-const handleProjectClick = (projectId) => {
-  const project = projectDetails.find(p => p.id === projectId);
-  if (project && project.link) {
-    window.open(project.link, '_blank'); // This will open the link in a new tab
-  }
+const handleProjectClick = (link) => {
+  console.log("Link to open:", link); // Check if the link is correct
+  window.open(link, '_blank');
 };
-
-const ProjectHighlightsSlide = ({handleCloseSlides}) => (
+const ProjectHighlightsSlide = ({ handleCloseSlides }) => (
   <div className="slide-container">
     <h2>Project Highlights</h2>
     <div className="projects-grid">
       {projectDetails.map((project) => (
         <Project
           key={project.id}
-          
           title={project.title}
           image={project.image}
-          onClick={() => handleProjectClick(project.id)}
+          link={project.link}
+          onClick={handleProjectClick} // Passing the function directly
         />
       ))}
     </div>
-         <button onClick={handleCloseSlides} className="close-button">×</button>
-
+    <button onClick={handleCloseSlides} className="close-button">×</button>
   </div>
 );
 
@@ -79,7 +78,7 @@ const FullScreenWithCarousel = () => {
       {!showSlides && (
         <div className="hero-text">
           <h1>Hello, my name is</h1>
-          <h2>Caylan Wilcox</h2>
+          <h2 className="name">Caylan Wilcox</h2>
           <h3>I'm a Web Developer.</h3>
           <div className="email-input-container">
             <input type="email" placeholder="Enter Your Email" />
@@ -113,8 +112,8 @@ const FullScreenWithCarousel = () => {
               <button onClick={handleCloseSlides} className="close-button">×</button>
             </div>
             <ProjectHighlightsSlide handleCloseSlides={handleCloseSlides} />
-            <Slide title="Hobbies and Interests" content="In my free time, I enjoy hiking, reading about new technology trends, and participating in hackathons to challenge myself and learn from others." handleCloseSlides={handleCloseSlides} />
-            <Slide title="Future Goals" content="Looking forward, I aim to deepen my knowledge in cloud computing and cybersecurity, areas that are rapidly evolving and critical to the future of technology."handleCloseSlides={handleCloseSlides} />
+            <Slide title="Hobbies and Interests" content="In my free time I love working on my art which is music and technology. If not I am watching Joe Rogan science podcasts, spending time with the family, thinking about cool inventions or helping those around me." handleCloseSlides={handleCloseSlides} />
+            <Slide title="Future Goals" content="Looking forward, I aim to deepen my knowledge in 3d web and app development, areas that are rapidly evolving and critical to the future of technology."handleCloseSlides={handleCloseSlides} />
           </Carousel>
         </div>
       )}

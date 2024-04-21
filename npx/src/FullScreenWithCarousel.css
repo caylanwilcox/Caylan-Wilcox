@@ -41,8 +41,6 @@ body{
   background-color: #f0f0f0; /* Slightly changes button color on hover */
 }
 .fullscreen-container {
-    position: relative;
-
   width: 100vw;
   height: 100vh;
   background: url('./fullscreen-background.jpg') no-repeat center center fixed; 
@@ -246,7 +244,9 @@ body{
   height: 100%; /* Ensure the parent has a defined height */
   width: 100%; /* Ensure the parent has a defined width */
 }
-
+.name{
+  color: lightgreen;
+}
 .start-slideshow-arrow:hover {
   background-color: #0056b3;
 }
@@ -438,17 +438,15 @@ body{
   }
 }
 }@media only screen and (max-width: 390px) {
- .start-slideshow-arrow {
+  .carousel .control-arrow {
+    /* Adjust your properties here */
+   
+  } .start-slideshow-arrow {
     /* You may need to adjust the translateY value as well if you change the top value */
-    background-color: lightgreen;
-    width: 35px;
-    height: 35px;
+   
 
-  }
-   .close-button {
-    top: 10px;
-    right: 10px;
-    font-size: 20px; /* Adjust size for smaller screens */
+    justify-content: center;
+    align-content: center;
   }
 }@media (max-width: 600px) {
   .hero-text {
