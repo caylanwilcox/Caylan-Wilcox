@@ -1,9 +1,10 @@
 /* Fullscreen background styling */
 body{
-    background-color: black;
+    background-color: #030303;
     margin: 0px;
     padding:0px;
 }
+
 .header-container {
   text-align: center; /* Aligns content to the center */
   margin-bottom: 2em; /* Provides spacing below the header */
@@ -21,7 +22,7 @@ body{
 }
 
 .header-container p {
-  color: #aaa; /* Text color for the title/subtitle */
+  color: #C0C0C0; /* Text color for the title/subtitle */
   margin-bottom: 1em; /* Space below the title/subtitle */
 }
 
@@ -245,7 +246,10 @@ body{
   width: 100%; /* Ensure the parent has a defined width */
 }
 .name{
-  color: lightgreen;
+  color: #C0C0C0;
+}
+.red{
+  color:red;
 }
 .start-slideshow-arrow:hover {
   background-color: #0056b3;

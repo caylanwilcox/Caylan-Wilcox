@@ -72,18 +72,39 @@ const FullScreenWithCarousel = () => {
   const [showSlides, setShowSlides] = useState(false);
   const handleCloseSlides = () => setShowSlides(false);
   const handleArrowClick = () => setShowSlides(true);
+const [email, setEmail] = useState('');
+const handleEmailChange = (e) => {
+  setEmail(e.target.value);
+};
+const handleEmailSubmit = async () => {
+  try {
+    const response = await fetch('http://localhost:3001/send-email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email: email }),
+    });
+    const data = await response.json();
+    console.log(data);
+    alert('Email sent successfully!');
+  } catch (error) {
+    console.error('Error sending email:', error);
+    alert('Failed to send email.');
+  }
+};
 
   return (
-    <div className="fullscreen-container" style={{ backgroundImage: `url(${fullscreenBackground})` }}>
+    <div className="fullscreen-container" style={{ backgroundImage: `url(${fullscreenBackground})`,backgroundPosition: ' center' }}>
       {!showSlides && (
         <div className="hero-text">
           <h1>Hello, my name is</h1>
           <h2 className="name">Caylan Wilcox</h2>
-          <h3>I'm a Web Developer.</h3>
-          <div className="email-input-container">
-            <input type="email" placeholder="Enter Your Email" />
-            <button>Let's Connect</button>
-          </div>
+          <h3>I'm a <span className="">Developer</span> Dedicated to Connecting<br /><span className="name"> Users </span>to <span className="name">Technology</span>.</h3>
+         <div className="email-input-container">
+  <input type="email" placeholder="Enter Your Email" value={email} onChange={handleEmailChange} />
+  <button onClick={handleEmailSubmit}>Let's Connect</button>
+</div>
         </div>
       )}
       {!showSlides && (
