@@ -100,7 +100,7 @@ const handleEmailSubmit = async () => {
         <div className="hero-text">
           <h1>Hello, my name is</h1>
           <h2 className="name">Caylan Wilcox</h2>
-          <h3>I'm a <span className="">Developer</span> Dedicated to Connecting<br /><span className="name"> Users </span>to <span className="name">Technology</span>.</h3>
+          <h3>I'm a <span className="">Developer</span> Dedicated to Connecting<br /><span className="name"> People </span>to <span className="name">Technology</span>.</h3>
          <div className="email-input-container">
   <input type="email" placeholder="Enter Your Email" value={email} onChange={handleEmailChange} />
   <button onClick={handleEmailSubmit}>Let's Connect</button>
