@@ -16,7 +16,6 @@ import git from './gits.jpg';
 import project1Img from './project1.png'; // Placeholder, replace with actual paths
 import project2Img from './project2.jpg';
 import project3Img from './project3.png';
-
 import project4Img from './project4.jpg';
 
 const Slide = ({ title, content,handleCloseSlides  }) => (
@@ -76,22 +75,41 @@ const [email, setEmail] = useState('');
 const handleEmailChange = (e) => {
   setEmail(e.target.value);
 };
-const handleEmailSubmit = async () => {
-  try {
-    const response = await fetch('http://localhost:3001/send-email', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email: email }),
-    });
-    const data = await response.json();
-    console.log(data);
-    alert('Email sent successfully!');
-  } catch (error) {
-    console.error('Error sending email:', error);
-    alert('Failed to send email.');
-  }
+const [subject, setSubject] = useState('');
+const [message, setMessage] = useState('');
+
+const handleSubjectChange = (e) => {
+  setSubject(e.target.value);
+};
+
+const handleMessageChange = (e) => {
+  setMessage(e.target.value);
+};
+
+ const handleEmailSubmit = async (event) => {
+  event.preventDefault();
+  const emailDetails = {
+    email: email,  // Using the email from state
+    subject: subject,  // Using the subject from state
+    message: message,  // Using the message from state
+  };
+
+  // Make sure the endpoint and headers are correctly set up
+  fetch('/api/send-email', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(emailDetails),
+  })
+  .then(response => response.json())  // Assuming the server responds with JSON
+  .then(data => {
+    alert('Email sent successfully: ' + data.message);  // Alert the message from the server
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+    alert('Failed to send email. Please try again later.');
+  });
 };
 
   return (
@@ -101,10 +119,27 @@ const handleEmailSubmit = async () => {
           <h1>Hello, my name is</h1>
           <h2 className="name">Caylan Wilcox</h2>
           <h3>I'm a <span className="">Developer</span> Dedicated to Connecting<br /><span className="name"> People </span>to <span className="name">Technology</span>.</h3>
-         <div className="email-input-container">
-  <input type="email" placeholder="Enter Your Email" value={email} onChange={handleEmailChange} />
-  <button onClick={handleEmailSubmit}>Let's Connect</button>
-</div>
+        <div className="email-input-container">
+    <input
+      type="email"
+      placeholder="Enter Your Email"
+      value={email}
+      onChange={handleEmailChange}
+    />
+    <input
+      type="text"
+      placeholder="Subject"
+      value={subject}
+      onChange={handleSubjectChange}
+    />
+    <textarea
+      placeholder="Your Message"
+      value={message}
+      onChange={handleMessageChange}
+    />
+    <button onClick={handleEmailSubmit}>Let's Connect</button>
+  </div>
+);
         </div>
       )}
       {!showSlides && (
