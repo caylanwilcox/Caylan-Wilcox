@@ -139,7 +139,7 @@ const handleMessageChange = (e) => {
     />
     <button onClick={handleEmailSubmit}>Let's Connect</button>
   </div>
-);
+d
         </div>
       )}
       {!showSlides && (
