@@ -1,20 +1,29 @@
-// using Twilio SendGrid's v3 Node.js Library
-// https://github.com/sendgrid/sendgrid-nodejs
+const sgMail = require('@sendgrid/mail');
+const cors = require('cors')({origin: true});  // Allow any domain, or configure specific ones
 
-const sgMail = require('@sendgrid/mail')
-sgMail.setApiKey(process.env.SENDGRID_API_KEY)
-const msg = {
-  to: 'caylanwilcox@gmail.com', // Change to your recipient
-  from: 'caylanwilcox@gmail.com', // Change to your verified sender
-  subject: 'Sending with SendGrid is Fun',
-  text: 'and easy to do anywhere, even with Node.js',
-  html: '<strong>and easy to do anywhere, even with Node.js</strong>',
-}
-sgMail
-  .send(msg)
-  .then(() => {
-    console.log('Email sent')
-  })
-  .catch((error) => {
-    console.error(error)
-  })
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
+module.exports = (req, res) => {
+  cors(req, res, () => {  // Use cors middleware
+    if (req.method === 'POST') {  // Ensure it's a POST request
+      const { email, subject, message } = req.body;
+
+      const content = {
+        to: 'caylanwilcox@gmail.com', // Your receiving email address
+        from: 'your-email@example.com', // Must be verified by SendGrid
+        subject: subject,
+        text: message,
+        html: `<strong>${message}</strong>`,
+      };
+
+      sgMail.send(content)
+        .then(() => res.status(200).json({ message: 'Email sent successfully' }))
+        .catch(error => {
+          console.error('SendGrid email error:', error);
+          res.status(500).json({ message: 'Error sending email', details: error.message });
+        });
+    } else {
+      res.status(405).send('Method not allowed'); // Handle non-POST requests
+    }
+  });
+};
