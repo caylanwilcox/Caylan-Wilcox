@@ -1,29 +1,32 @@
-// server.js (Node.js with Express)
+require('dotenv').config();
 const express = require('express');
-const sendEmail = require('./SendGridConfig'); // assuming this exports the function to send emails
+const cors = require('cors');
+const sgMail = require('@sendgrid/mail');
 const app = express();
+
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
+app.use(cors());
+app.use(express.json());
+
+app.post('/api/send-email', async (req, res) => {
+  const { email, subject, message } = req.body;
+  const msg = {
+    to: 'your-email@example.com',  // Where you want to receive the emails
+    from: 'your-verified-sender@example.com',  // Verified SendGrid sender email
+    subject: subject,
+    text: message,
+    html: `<strong>${message}</strong>`,
+  };
+
+  try {
+    await sgMail.send(msg);
+    res.json({ success: true });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: 'Failed to send email' });
+  }
+});
+
 const PORT = process.env.PORT || 3000;
-
-app.use(express.json()); // for parsing application/json
-
-app.post('/subscribe', async (req, res) => {
-    const { email } = req.body;
-    const emailDetails = {
-        to: 'caylanwilcox@gmail.com',
-        from: 'caylanwilcox@gmail.com',
-        subject: 'New Subscriber',
-        text: `You have a new subscriber: ${email}`,
-        html: `<strong>You have a new subscriber:</strong> ${email}`,
-    };
-
-    try {
-        const response = await sendEmail(emailDetails);
-        res.json({ success: true, message: 'Subscription email sent.' });
-    } catch (error) {
-        res.status(500).json({ success: false, message: 'Failed to send email.' });
-    }
-});
-
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

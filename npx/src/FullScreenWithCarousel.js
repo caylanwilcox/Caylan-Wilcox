@@ -71,46 +71,38 @@ const FullScreenWithCarousel = () => {
   const [showSlides, setShowSlides] = useState(false);
   const handleCloseSlides = () => setShowSlides(false);
   const handleArrowClick = () => setShowSlides(true);
-const [email, setEmail] = useState('');
-const handleEmailChange = (e) => {
-  setEmail(e.target.value);
-};
-const [subject, setSubject] = useState('');
-const [message, setMessage] = useState('');
 
-const handleSubjectChange = (e) => {
-  setSubject(e.target.value);
-};
-
-const handleMessageChange = (e) => {
-  setMessage(e.target.value);
-};
+  const [email, setEmail] = useState('');
+  const handleEmailChange = (e) => setEmail(e.target.value);
+  const [subject, setSubject] = useState('');
+  const handleSubjectChange = (e) => setSubject(e.target.value);
+  const [message, setMessage] = useState('');
+  const handleMessageChange = (e) => setMessage(e.target.value);
 
  const handleEmailSubmit = async (event) => {
-  event.preventDefault();
-  const emailDetails = {
-    email: email,  // Using the email from state
-    subject: subject,  // Using the subject from state
-    message: message,  // Using the message from state
-  };
+    event.preventDefault();
+    const emailDetails = {
+      email, // Using the email from state
+      subject, // Using the subject from state
+      message, // Using the message from state
+    };
 
-  // Make sure the endpoint and headers are correctly set up
-  fetch('/api/send-email', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(emailDetails),
-  })
-  .then(response => response.json())  // Assuming the server responds with JSON
-  .then(data => {
-    alert('Email sent successfully: ' + data.message);  // Alert the message from the server
-  })
-  .catch((error) => {
-    console.error('Error:', error);
-    alert('Failed to send email. Please try again later.');
-  });
-};
+ fetch('/api/send-email', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(emailDetails),
+})
+.then(response => response.json())
+.then(data => {
+  alert('Email sent successfully: ' + data.message);
+})
+.catch((error) => {
+  console.error('Error:', error);
+  alert('Failed to send email. Please try again later.');
+});
+  };
 
   return (
     <div className="fullscreen-container" style={{ backgroundImage: `url(${fullscreenBackground})`,backgroundPosition: ' center' }}>
@@ -139,7 +131,7 @@ const handleMessageChange = (e) => {
     />
     <button onClick={handleEmailSubmit}>Let's Connect</button>
   </div>
-d
+
         </div>
       )}
       {!showSlides && (
