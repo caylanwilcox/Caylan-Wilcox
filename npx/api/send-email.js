@@ -10,7 +10,7 @@ module.exports = (req, res) => {
 
       const content = {
         to: 'caylanwilcox@gmail.com', // Your receiving email address
-        from: 'your-email@example.com', // Must be verified by SendGrid
+        from: 'caylanwilcox@gmail.com', // Must be verified by SendGrid
         subject: subject,
         text: message,
         html: `<strong>${message}</strong>`,

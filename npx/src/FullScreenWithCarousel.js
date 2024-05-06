@@ -18,13 +18,14 @@ import project2Img from './project2.jpg';
 import project3Img from './project3.png';
 import project4Img from './project4.jpg';
 
-const Slide = ({ title, content,handleCloseSlides  }) => (
+const Slide = ({ title, content,handleCloseSlides  }) => ( //created isolated component for slide that receives props from the jsx element and handleCloseSlides function 
   <div className="slide-container">
     <h2>{title}</h2>
     {typeof content === 'string' ? <p>{content}</p> : content}
      <button onClick={handleCloseSlides} className="close-button">×</button>
   </div>
 );
+
 
 const Project = ({ title, image, link }) => (
   <div className="project-item" onClick={(e) => {
@@ -83,10 +84,10 @@ const FullScreenWithCarousel = () => {
     event.preventDefault();
     const emailDetails = {
       email, // Using the email from state
-      subject, // Using the subject from state
+      subject, // Using the subject from statea
       message, // Using the message from state
     };
-
+console.log("Sending email details:", emailDetails);
  fetch('/api/send-email', {
   method: 'POST',
   headers: {
@@ -110,32 +111,33 @@ const FullScreenWithCarousel = () => {
         <div className="hero-text">
           <h1>Hello, my name is</h1>
           <h2 className="name">Caylan Wilcox</h2>
-          <h3>I'm a <span className="">Developer</span> Dedicated to Connecting<br /><span className="name"> People </span>to <span className="name">Technology</span>.</h3>
-        <div className="email-input-container">
-    <input
-      type="email"
-      placeholder="Enter Your Email"
-      value={email}
-      onChange={handleEmailChange}
-    />
-    <input
-      type="text"
-      placeholder="Subject"
-      value={subject}
-      onChange={handleSubjectChange}
-    />
-    <textarea
-      placeholder="Your Message"
-      value={message}
-      onChange={handleMessageChange}
-    />
-    <button onClick={handleEmailSubmit}>Let's Connect</button>
-  </div>
+          <h3>I am a <span className="">Developer</span> Dedicated to Connecting<br /><span className="name"> People </span>to <span className="name">Technology</span>.</h3>
+        
+<div className="email-input-container">
+        <input
+          type="email"
+          placeholder="Enter Your Email"
+          value={email}
+          onChange={handleEmailChange}
+        />
+        <input
+          type="text"
+          placeholder="Subject"
+          value={subject}
+          onChange={handleSubjectChange}
+        />
+        <textarea
+          placeholder="Your Message"
+          value={message}
+          onChange={handleMessageChange}
+        />
+        <button onClick={handleEmailSubmit}>Let's Connect</button>
+      </div>
 
         </div>
       )}
       {!showSlides && (
-        <button onClick={handleArrowClick} className="start-slideshow-arrow">→</button>
+        <button onClick={handleArrowClick} className="start-slideshow-arrow"> Start Here →</button>
       )}
       {showSlides && (
         <div className={showSlides ? "carousel-visible" : "carousel-hidden"}>

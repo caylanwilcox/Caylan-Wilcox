@@ -230,13 +230,12 @@ body{
 }
 .start-slideshow-arrow {
   font-size: 1.5em;
-  padding: 10px 20px;
   cursor: pointer;
   border: none;
   border-radius: 5px;
-
+padding:10px;
   color: white;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.7s ease;
 }
 .slide.selected.previous {
   display: flex;
@@ -252,7 +251,11 @@ body{
   color:red;
 }
 .start-slideshow-arrow:hover {
-  background-color: #0056b3;
+color: silver;
+font-stretch: ultra-expanded;
+font-size: 1.55em;
+  transition: .34s ease;
+
 }
 
 /* Initial Carousel Hidden Style */
@@ -293,8 +296,10 @@ body{
 .hero-text h3 {
   margin: 0;
   font-size: .5em; /* Subtitle text for the profession */
+    margin-bottom: 45px;
+
 }
-.email-input-container input[type="email"]{
+.email-input-container input{
   
     background: rgba(255, 255, 255, 0.2); /* Semi-transparent white background */
   border: 1px solid rgba(255, 255, 255, 0.3); /* Light border for the glass effect */
@@ -306,8 +311,84 @@ body{
   margin: 0 -5px; /* Spacing between the input and button */
   font-size: 0.5em; /* Smaller font size */
   color: #fff; /* White text color for better visibility */
+  width: 40%;
+  display: flex;
   
-  
+}.email-input-container {
+  display: flex;
+justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+    align-items: flex-start; /* Aligns children (inputs and button) to the start (left) */
+
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-control {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 8px 16px;
+  margin: 5px 0;
+  font-size: 0.8em;
+  color: #fff;
+  width: 100%;
+    align-items: flex-start; /* Aligns children (inputs and button) to the start (left) */
+
+}
+
+textarea.form-control {
+  resize: vertical;
+}
+
+.btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 8px 16px;
+  font-size: 0.8em;
+  color: #fff;
+  width: 100%;
+    align-self: flex-start; /* Align the button to the start of the container */
+
+  margin-top: 10px;
+}
+
+.email-input-container {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+     width: 80%;
+
+}
+
+
+
+.email-input-container textarea{
+    width:90%;
+
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent white background */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Light border for the glass effect */
+  backdrop-filter: blur(5px); /* Blurred glass effect */
+  -webkit-backdrop-filter: blur(5px); /* For Safari */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  border-radius: 5px; /* Rounded corners for the input and button */
+  padding: 8px 16px; /* Padding inside the input and button */
+  margin: 0 -5px; /* Spacing between the input and button */
+  font-size: 0.5em; /* Smaller font size */
+  color: #fff; /* White text color for better visibility */
+    margin-bottom: 20px;
+
 }
 .email-input-container button {
   background: rgba(255, 255, 255, 0.2); /* Semi-transparent white background */
@@ -317,15 +398,17 @@ body{
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
   border-radius: 5px; /* Rounded corners for the input and button */
   padding: 8px 16px; /* Padding inside the input and button */
-  margin: 0 5px; /* Spacing between the input and button */
+  margin: 20px 5px; /* Spacing between the input and button */
 
   font-size: 0.5em; /* Smaller font size */
   color: #fff; /* White text color for better visibility */
 }
 
-.email-input-container input[type="email"] {
+.email-input-container input{
   width: auto; /* Adjust width to fit content or use a fixed width */
   flex-grow: 1; /* Allows the input to grow and fill the available space */
+  width :90%;
+  margin-bottom: 20px;
 }
 .close-button {
   position: absolute;
@@ -373,6 +456,8 @@ body{
   align-items: center;
   cursor: pointer;
   text-decoration: none; /* Removes underline from links if you use 'a' tags */
+    box-shadow: 0 6px 10px rgba(0,0,0,0.1); /* Optional shadow for depth */
+
 }
 
 .project-item img {
