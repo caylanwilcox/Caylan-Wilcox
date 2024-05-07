@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import './FullScreenWithCarousel.css';
@@ -17,6 +17,11 @@ import project1Img from './project1.png'; // Placeholder, replace with actual pa
 import project2Img from './project2.jpg';
 import project3Img from './project3.png';
 import project4Img from './project4.jpg';
+import emailjs from '@emailjs/browser';
+
+const serviceId = process.env.REACT_APP_SERVICE_ID;
+const templateId = process.env.REACT_APP_TEMPLATE_ID;
+const publicKey = process.env.REACT_APP_PUBLIC_KEY;
 
 const Slide = ({ title, content,handleCloseSlides  }) => ( //created isolated component for slide that receives props from the jsx element and handleCloseSlides function 
   <div className="slide-container">
@@ -72,68 +77,74 @@ const FullScreenWithCarousel = () => {
   const [showSlides, setShowSlides] = useState(false);
   const handleCloseSlides = () => setShowSlides(false);
   const handleArrowClick = () => setShowSlides(true);
-
+  const form = useRef();
   const [email, setEmail] = useState('');
-  const handleEmailChange = (e) => setEmail(e.target.value);
   const [subject, setSubject] = useState('');
-  const handleSubjectChange = (e) => setSubject(e.target.value);
   const [message, setMessage] = useState('');
+  const [showSuccessAnimation, setShowSuccessAnimation] = useState(false);
+
+  const handleEmailChange = (e) => setEmail(e.target.value);
+  const handleSubjectChange = (e) => setSubject(e.target.value);
   const handleMessageChange = (e) => setMessage(e.target.value);
 
- const handleEmailSubmit = async (event) => {
-    event.preventDefault();
-    const emailDetails = {
-      email, // Using the email from state
-      subject, // Using the subject from statea
-      message, // Using the message from state
-    };
-console.log("Sending email details:", emailDetails);
- fetch('/api/send-email', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify(emailDetails),
-})
-.then(response => response.json())
-.then(data => {
-  alert('Email sent successfully: ' + data.message);
-})
-.catch((error) => {
-  console.error('Error:', error);
-  alert('Failed to send email. Please try again later.');
-});
-  };
+  
+  const sendEmail = (e) => {
+    e.preventDefault();
 
+    emailjs
+      .sendForm( 'service_15u857l' , 'template_nfpxk1m', form.current, {
+        publicKey: 'Vm6L9JMpmkOOJN4hD',
+      })
+      .then(
+        () => {
+          console.log('SUCCESS!');
+      setShowSuccessAnimation(true);
+        setTimeout(() => setShowSuccessAnimation(false), 3000); // Animation lasts 3 seconds
+        // Reset form values
+        setEmail('');
+        setSubject('');
+        setMessage('');
+      }, (error) => {
+        console.log('FAILED...', error.text);
+      });
+  };
   return (
     <div className="fullscreen-container" style={{ backgroundImage: `url(${fullscreenBackground})`,backgroundPosition: ' center' }}>
       {!showSlides && (
         <div className="hero-text">
           <h1>Hello, my name is</h1>
-          <h2 className="name">Caylan Wilcox</h2>
+          <h2 className="name">Caylan Wilcox</h2 >
           <h3>I am a <span className="">Developer</span> Dedicated to Connecting<br /><span className="name"> People </span>to <span className="name">Technology</span>.</h3>
         
-<div className="email-input-container">
+<form ref={form} className="email-input-container" onSubmit={sendEmail}>
         <input
           type="email"
           placeholder="Enter Your Email"
-          value={email}
-          onChange={handleEmailChange}
+          name="user_email"
+                        value={email}
+              onChange={handleEmailChange}
+
         />
         <input
           type="text"
           placeholder="Subject"
-          value={subject}
-          onChange={handleSubjectChange}
-        />
+          name="user_name"
+                  value={subject}
+              onChange={handleSubjectChange}
+          />
+                
+
         <textarea
           placeholder="Your Message"
-          value={message}
-          onChange={handleMessageChange}
-        />
-        <button onClick={handleEmailSubmit}>Let's Connect</button>
-      </div>
+          name="message"
+              onChange={handleMessageChange}
+              value={message}
 
+        />
+        <button type="submit" value="Send">Let's Connect</button>
+            {showSuccessAnimation && <div className="success-animation">Email sent successfully!</div>}
+
+      </form>
         </div>
       )}
       {!showSlides && (
