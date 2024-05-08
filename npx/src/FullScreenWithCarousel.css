@@ -456,7 +456,7 @@ textarea.form-control {
   color: white; /* Initial color of the X */
   font-size: 24px; /* Adjust size as necessary */
   cursor: pointer;
-  z-index: 100; /* Ensure it's above the carousel */
+  z-index: 1050; /* Ensure it's above the carousel */
   transition: color 0.3s ease; /* Transition for color change */
 }
 
@@ -589,18 +589,7 @@ textarea.form-control {
   margin: auto; /* Center the container in the carouzsel window */
 
 }
-.close-button {
-  position: absolute;
-  top: 20px; /* Adjust as necessary */
-  right: 20px; /* Adjust as necessary */
-  background: transparent;
-  border: none;
-  color: white; /* Initial color of the X */
-  font-size: 24px; /* Adjust size as necessary */
-  cursor: pointer;
-  z-index: 100; /* Ensure it's above the carousel */
-  transition: color 0.3s ease; /* Transition for color change */
-}
+
 .fullscreen-container {
   width: 95vw;
   height: 95vh;
