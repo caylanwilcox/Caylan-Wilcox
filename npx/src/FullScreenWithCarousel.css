@@ -568,7 +568,7 @@ textarea.form-control {
 
 
 
-@media only screen and (max-width: 400px) { /* Adjust for iPhone 12 width */
+@media only screen and (max-width: 500px) { /* Adjust for iPhone 12 width */
 .slide-container {
   width: 80vw;
   color:white;
@@ -589,7 +589,12 @@ textarea.form-control {
   margin: auto; /* Center the container in the carouzsel window */
 
 }
-
+ .start-slideshow-arrow {
+    right: 5px; /* Adjusted so it doesn't conflict with the arrow */
+    bottom: 55%;
+    font-size: medium;
+    font-weight: bold;
+  }
 .fullscreen-container {
   width: 95vw;
   height: 95vh;
@@ -615,7 +620,7 @@ textarea.form-control {
     font-size: 0.8em; /* Adjusts font size to smaller scale */
   }
 
-@media only screen and (max-width: 390px) {
+@media only screen and (max-width: 500px) {
   .carousel .control-prev.control-arrow {
     left: 10px; /* Fixed distance from the left */
   }
@@ -633,7 +638,7 @@ textarea.form-control {
     font-weight: bold;
   }
 }
-}@media only screen and (max-width: 390px) {
+}@media only screen and (max-width: 500px) {
   .carousel .control-arrow {
     /* Adjust your properties here */
    ;
