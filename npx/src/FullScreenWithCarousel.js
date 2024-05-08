@@ -18,6 +18,7 @@ import project2Img from './project2.jpg';
 import project3Img from './project3.png';
 import project4Img from './project4.jpg';
 import emailjs from '@emailjs/browser';
+import nodejs from './nodejs.png'
 
 const serviceId = process.env.REACT_APP_SERVICE_ID;
 const templateId = process.env.REACT_APP_TEMPLATE_ID;
@@ -162,6 +163,7 @@ const FullScreenWithCarousel = () => {
                 <div className="skill-item"><img src={htmlcss} alt="HTML & CSS" /><p>HTML & CSS</p></div>
                 <div className="skill-item"><img src={js} alt="Javascript" /><p>Javascript</p></div>
                 <div className="skill-item"><img src={rect} alt="React" /><p>React</p></div>
+                <div className="skill-item"><img src={nodejs} alt="NodeJs" /><p>NodeJs</p></div>
                 <div className="skill-item"><img src={npm} alt="npm" /><p>npm</p></div>
                 <div className="skill-item"><img src={GitHub} alt="GitHub" /><p>GitHub</p></div>
                 <div className="skill-item"><img src={Figma} alt="Figma" /><p>Figma</p></div>

@@ -514,13 +514,67 @@ textarea.form-control {
   transform: translateY(-5px); /* Creates a small lift effect */
   box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional shadow for depth */
 }
+
+@media only screen and (max-width: 1200px) { /* Adjust for iPhone 12 width */
+.slide-container {
+  width: 60vw;
+  color:white;
+  text-align: center;
+
+  height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto; /* Center the container in the carousel window *
+    background: rgba(255, 255, 255, 0.1); /* Adjust the color and opacity to your liking */
+  border-radius: 15px; /* Rounded corners */
+  backdrop-filter: blur(10px); /* Blurred glass effect */
+  -webkit-backdrop-filter: blur(10px); /* For Safari compatibility */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Slight border for defined edges */
+  padding: 20px; /* Padding inside the container */
+  margin: auto; /* Center the container in the carouzsel window */
+
+}
+
+
+
+
+.fullscreen-container {
+  width: 95vw;
+  height: 95vh;
+  background: url('./fullscreen-background.jpg') no-repeat center center fixed; 
+  background-size: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+    overflow-x: hidden;
+  overflow-y: hidden;
+}
+    .skills-grid {
+    grid-template-columns: repeat(3, 1fr); /* Changes to 2 columns in smaller screens */
+    gap: 5px; /* Reduces gap size for tighter spacing */
+    padding: 5px; /* Adds padding to prevent touch to the edges */
+  }
+
+  .skill-item {
+    width: 80%; /* Reduces the width to prevent overflow */
+    height: auto; /* Adjust height automatically based on content */
+    padding: 5px; /* Reduces padding */
+    font-size: 0.8em; /* Adjusts font size to smaller scale */
+  }
+}
+
+
+
 @media only screen and (max-width: 400px) { /* Adjust for iPhone 12 width */
 .slide-container {
   width: 80vw;
   color:white;
   text-align: center;
 
-  height: 75vh;
+  height: 70vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -548,6 +602,18 @@ textarea.form-control {
     overflow-x: hidden;
   overflow-y: hidden;
 }
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr); /* Changes to 2 columns in smaller screens */
+    gap: 5px; /* Reduces gap size for tighter spacing */
+    padding: 5px; /* Adds padding to prevent touch to the edges */
+  }
+
+  .skill-item {
+    width: 100%; /* Reduces the width to prevent overflow */
+    height: auto; /* Adjust height automatically based on content */
+    padding: 5px; /* Reduces padding */
+    font-size: 0.8em; /* Adjusts font size to smaller scale */
+  }
 
 @media only screen and (max-width: 390px) {
   .carousel .control-prev.control-arrow {
@@ -560,13 +626,17 @@ textarea.form-control {
 
   .start-slideshow-arrow {
     /* Make sure this button doesn't overlap with the next arrow on small screens */
-    right: 60px; /* Adjusted so it doesn't conflict with the arrow */
+    right: 5px; /* Adjusted so it doesn't conflict with the arrow */
+    bottom:55%;
+    
+    font-size: medium;
+    font-weight: bold;
   }
 }
 }@media only screen and (max-width: 390px) {
   .carousel .control-arrow {
     /* Adjust your properties here */
-   
+   ;
   } .start-slideshow-arrow {
     /* You may need to adjust the translateY value as well if you change the top value */
    
@@ -582,5 +652,19 @@ textarea.form-control {
   input[type="email"],
   .contact-me-btn {
     width: 90%; /* Allow the input and button to take more space */
+  }
+}
+@media (max-width: 800px) {
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr); /* Changes to 2 columns in smaller screens */
+    gap: 5px; /* Reduces gap size for tighter spacing */
+    padding: 5px; /* Adds padding to prevent touch to the edges */
+  }
+
+  .skill-item {
+    width: 80%; /* Reduces the width to prevent overflow */
+    height: auto; /* Adjust height automatically based on content */
+    padding: 5px; /* Reduces padding */
+    font-size: 0.8em; /* Adjusts font size to smaller scale */
   }
 }
