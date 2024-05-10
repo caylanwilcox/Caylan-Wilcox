@@ -154,7 +154,7 @@ const FullScreenWithCarousel = () => {
       {showSlides && (
         <div className={showSlides ? "carousel-visible" : "carousel-hidden"}>
           <Carousel showArrows={true} autoPlay={false} infiniteLoop={true} showThumbs={false}>
-            <Slide title="My Passion for Software Development" content="My passion is having ideas and solving how to bring them to life. I love self growth and talking about it because I would not be building applications today without it. I am gravited with the challenges associated with being on the bleeding edge of technology. Being a software engineer at tesla would mean the impossible to me. Please take a look through my portfolio and thank you for your time." handleCloseSlides={handleCloseSlides} />
+            <Slide title="My Passion for Software Development" content="My passion is having ideas and solving how to bring them to life. I love self growth and talking about it because I would not be building applications today without it. I am gravited with the challenges associated with being on the bleeding edge of technology. Please take a look through my portfolio and thank you for your time." handleCloseSlides={handleCloseSlides} />
             <div className="slide-container">
               <div className="skills-header">
                 <h2>Skills and Technologies</h2>
