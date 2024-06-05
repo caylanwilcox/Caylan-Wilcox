@@ -19,7 +19,7 @@ import project3Img from './project3.png';
 import project4Img from './project4.jpg';
 import emailjs from '@emailjs/browser';
 import nodejs from './nodejs.png'
-
+import testD from './testdriveroom.PNG';
 const serviceId = process.env.REACT_APP_SERVICE_ID;
 const templateId = process.env.REACT_APP_TEMPLATE_ID;
 const publicKey = process.env.REACT_APP_PUBLIC_KEY;
@@ -44,10 +44,10 @@ const Project = ({ title, image, link }) => (
   </div>
 );
 const projectDetails = [
-  { title: 'Realtime Tesla Fleet Manager', image: project1Img, id: 'project1', link:'https://tesla-test-drive.vercel.app/',  technologies: ['React', 'css', 'MongoDB'] },
+  { title: 'Realtime Tesla Fleet Manager', image: testD, id: 'project1', link:'https://tesla-test-drive.vercel.app/',  technologies: ['React', 'css', 'MongoDB'] },
   { title: 'Luxury Jewelers Website', image: project2Img, id: 'project2',link:'https://jewelry-business-react.vercel.app/' },
   { title: 'Car Detailing Website Night Mode', image: project3Img, id: 'project3',link:'https://window-tints.vercel.app/' },
-  { title: 'Tesla Online Proposal', image: project4Img, id: 'project4',link:'https://tesla-online-etxg.vercel.app/' }
+  { title: 'Tesla Online Proposal', image: project4Img, id: 'project4',link:'https://tesla-online.vercel.app/' }
 ];
 
 
@@ -122,7 +122,7 @@ const FullScreenWithCarousel = () => {
           type="email"
           placeholder="Enter Your Email"
           name="user_email"
-                        value={email}
+          value={email}
               onChange={handleEmailChange}
 
         />

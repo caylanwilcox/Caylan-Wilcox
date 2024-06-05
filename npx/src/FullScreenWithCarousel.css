@@ -639,10 +639,7 @@ textarea.form-control {
   }
 }
 }@media only screen and (max-width: 500px) {
-  .carousel .control-arrow {
-    /* Adjust your properties here */
-   ;
-  } .start-slideshow-arrow {
+ .start-slideshow-arrow {
     /* You may need to adjust the translateY value as well if you change the top value */
    
 
@@ -660,6 +657,7 @@ textarea.form-control {
   }
 }
 @media (max-width: 800px) {
+
   .skills-grid {
     grid-template-columns: repeat(3, 1fr); /* Changes to 2 columns in smaller screens */
     gap: 5px; /* Reduces gap size for tighter spacing */
